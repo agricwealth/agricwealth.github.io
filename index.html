@@ -35,6 +35,7 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             color: var(--text-dark);
             overflow-x: hidden;
+            padding-top: 80px; /* Add padding for fixed navbar */
         }
         
         /* Navigation */
@@ -43,6 +44,7 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            min-height: 80px;
         }
         
         .navbar-brand img {
@@ -377,122 +379,76 @@
             margin-top: 40px;
         }
         
-        /* Innovative Speaker Cards */
+        /* Professional Speaker Cards Redesign */
         .speakers-section {
             padding: 100px 0;
-            background: white;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
             position: relative;
         }
         
         .speaker-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-top: 60px;
         }
         
         .speaker-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 25px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent;
+            background: white;
+            border-radius: 15px;
+            padding: 35px 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             position: relative;
-            overflow: hidden;
             cursor: pointer;
+            overflow: hidden;
         }
         
         .speaker-card::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
             background: var(--gradient-primary);
-            border-radius: 25px;
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.4s ease;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
         
         .speaker-card:hover::before {
-            opacity: 1;
-        }
-        
-        .speaker-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 23px;
-            margin: 2px;
-        }
-        
-        .speaker-card > * {
-            position: relative;
-            z-index: 1;
+            transform: scaleX(1);
         }
         
         .speaker-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: transparent;
         }
         
-        .speaker-visual {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 25px;
-            position: relative;
-        }
-        
-        .speaker-pattern {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
+        .speaker-number {
             position: absolute;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pattern-1 { background: linear-gradient(45deg, #2E7D32 25%, transparent 25%, transparent 75%, #2E7D32 75%, #2E7D32), linear-gradient(45deg, #2E7D32 25%, transparent 25%, transparent 75%, #2E7D32 75%, #2E7D32); background-size: 30px 30px; background-position: 0 0, 15px 15px; }
-        .pattern-2 { background: radial-gradient(circle at 20% 50%, #C19A5B 0%, #2E7D32 100%); }
-        .pattern-3 { background: conic-gradient(from 45deg, #2E7D32, #43A047, #C19A5B, #2E7D32); }
-        .pattern-4 { background: linear-gradient(135deg, #2E7D32 0%, #43A047 50%, #C19A5B 100%); }
-        .pattern-5 { background: repeating-linear-gradient(45deg, #2E7D32, #2E7D32 10px, #43A047 10px, #43A047 20px); }
-        .pattern-6 { background: radial-gradient(circle at center, #C19A5B 0%, #2E7D32 50%, #1B5E20 100%); }
-        .pattern-7 { background: linear-gradient(to right, #2E7D32 0%, #C19A5B 50%, #2E7D32 100%); }
-        .pattern-8 { background: repeating-radial-gradient(circle at center, #2E7D32 0px, #43A047 15px, #C19A5B 30px); }
-        
-        .speaker-initials {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3.5rem;
-            font-weight: 700;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            z-index: 2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
         
-        .speaker-card:hover .speaker-pattern {
-            animation: rotate-slow 10s linear infinite;
-        }
-        
-        @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .speaker-info {
+            padding-right: 50px;
         }
         
         .speaker-name {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-dark);
             margin-bottom: 8px;
@@ -508,46 +464,70 @@
             font-weight: 500;
             font-size: 0.95rem;
             margin-bottom: 15px;
-        }
-        
-        .speaker-bio {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .speaker-card:hover .speaker-bio {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .bio-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(46, 125, 50, 0.1);
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
+        }
+        
+        .speaker-title::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--accent-gold);
+            display: inline-block;
+        }
+        
+        .speaker-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .expertise-tag {
+            background: rgba(46, 125, 50, 0.1);
+            color: var(--primary-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
         
-        .bio-icon:hover {
+        .speaker-card:hover .expertise-tag {
             background: var(--primary-green);
-            transform: scale(1.1);
-        }
-        
-        .bio-icon:hover i {
             color: white;
         }
         
-        .bio-icon i {
-            color: var(--primary-green);
-            font-size: 1.2rem;
+        /* Alternative minimalist design for mobile */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .navbar {
+                min-height: 70px;
+            }
+            
+            .hero {
+                margin-top: -70px;
+                padding-top: 70px;
+            }
+            
+            .speaker-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .speaker-card {
+                padding: 25px 20px;
+            }
+            
+            .speaker-number {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
         }
         
         /* Topics Section */
@@ -884,110 +864,73 @@
     <!-- Speakers Section -->
     <section id="speakers" class="speakers-section">
         <div class="container">
-            <h2 class="section-title text-center mb-5" data-aos="fade-up">Featured Speakers</h2>
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Distinguished Speakers</h2>
+            <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
+                Join industry leaders and innovators shaping the future of African agriculture
+            </p>
             <div class="speaker-grid">
                 <div class="speaker-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-1"></div>
-                        <div class="speaker-initials">EM</div>
+                    <span class="speaker-number">01</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Evans Kyere-Mensah</h5>
+                        <p class="speaker-title">Agricultural Innovation Expert</p>
+                        
                     </div>
-                    <h5 class="speaker-name">Evans Kyere-Mensah</h5>
-                    <p class="speaker-title">Agricultural Innovation Expert</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
+                </div>
+                <div class="speaker-card" data-aos="fade-up" data-aos-delay="150">
+                    <span class="speaker-number">02</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Mr. Mawutor Alifo</h5>
+                        <p class="speaker-title">Sustainable Farming Advocate</p>
+                        
                     </div>
                 </div>
                 <div class="speaker-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-2"></div>
-                        <div class="speaker-initials">MA</div>
+                    <span class="speaker-number">03</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Dr. Peter B Otokunor</h5>
+                        <p class="speaker-title">Agribusiness Strategist</p>
+                        
                     </div>
-                    <h5 class="speaker-name">Mr. Mawutor Alifo</h5>
-                    <p class="speaker-title">Sustainable Farming Advocate</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
+                </div>
+                <div class="speaker-card" data-aos="fade-up" data-aos-delay="250">
+                    <span class="speaker-number">04</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Dr. Edwini Kessie</h5>
+                        <p class="speaker-title">Trade & Investment Expert</p>
+                        
                     </div>
                 </div>
                 <div class="speaker-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-3"></div>
-                        <div class="speaker-initials">PO</div>
+                    <span class="speaker-number">05</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Diana Afriyie Addo</h5>
+                        <p class="speaker-title">Youth Empowerment Leader</p>
+                        
                     </div>
-                    <h5 class="speaker-name">Dr. Peter B Otokunor</h5>
-                    <p class="speaker-title">Agribusiness Strategist</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
+                </div>
+                <div class="speaker-card" data-aos="fade-up" data-aos-delay="350">
+                    <span class="speaker-number">06</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Lateef Apau Wiredu</h5>
+                        <p class="speaker-title">Green Energy Specialist</p>
+                        
                     </div>
                 </div>
                 <div class="speaker-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-4"></div>
-                        <div class="speaker-initials">EK</div>
-                    </div>
-                    <h5 class="speaker-name">Dr. Edwini Kessie</h5>
-                    <p class="speaker-title">Investment & Trade Expert</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
+                    <span class="speaker-number">07</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Bright Evans Darko</h5>
+                        <p class="speaker-title">Food Security Advocate</p>
+                        
                     </div>
                 </div>
-                <div class="speaker-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-5"></div>
-                        <div class="speaker-initials">DA</div>
-                    </div>
-                    <h5 class="speaker-name">Diana Afriyie Addo</h5>
-                    <p class="speaker-title">Youth Empowerment Leader</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
-                    </div>
-                </div>
-                <div class="speaker-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-6"></div>
-                        <div class="speaker-initials">LA</div>
-                    </div>
-                    <h5 class="speaker-name">Lateef Apau Wiredu</h5>
-                    <p class="speaker-title">Green Energy Specialist</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
-                    </div>
-                </div>
-                <div class="speaker-card" data-aos="fade-up" data-aos-delay="700">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-7"></div>
-                        <div class="speaker-initials">BD</div>
-                    </div>
-                    <h5 class="speaker-name">Bright Evans Darko</h5>
-                    <p class="speaker-title">Food Security Advocate</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
-                    </div>
-                </div>
-                <div class="speaker-card" data-aos="fade-up" data-aos-delay="800">
-                    <div class="speaker-visual">
-                        <div class="speaker-pattern pattern-8"></div>
-                        <div class="speaker-initials">SO</div>
-                    </div>
-                    <h5 class="speaker-name">Simeon Yamoah Owusu</h5>
-                    <p class="speaker-title">Technology Integration Expert</p>
-                    <div class="speaker-bio">
-                        <div class="bio-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="bio-icon"><i class="fas fa-globe"></i></div>
-                        <div class="bio-icon"><i class="fas fa-envelope"></i></div>
+                <div class="speaker-card" data-aos="fade-up" data-aos-delay="450">
+                    <span class="speaker-number">08</span>
+                    <div class="speaker-info">
+                        <h5 class="speaker-name">Simeon Yamoah Owusu</h5>
+                        <p class="speaker-title">AgriTech Integration Expert</p>
+                        
                     </div>
                 </div>
             </div>
